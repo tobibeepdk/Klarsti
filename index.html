@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#173f3b" />
+    <meta name="description" content="Gratis læse-, skrive- og regnehjælp, som virker direkte på din enhed." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Klarsti" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icon-192.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Klarsti – hjælp til ord og tal</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Spring til indhold</a>
+
+    <svg class="svg-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-home" viewBox="0 0 24 24">
+        <path d="M3 11.5 12 4l9 7.5" />
+        <path d="M5.5 10.5V20h13v-9.5M9.5 20v-5.5h5V20" />
+      </symbol>
+      <symbol id="icon-book" viewBox="0 0 24 24">
+        <path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H11v17H7.5A3.5 3.5 0 0 0 4 22Z" />
+        <path d="M20 5.5A3.5 3.5 0 0 0 16.5 2H13v17h3.5A3.5 3.5 0 0 1 20 22Z" />
+      </symbol>
+      <symbol id="icon-numbers" viewBox="0 0 24 24">
+        <path d="M6 4v16M3.5 7H7a2 2 0 0 1 0 4H4.5 7a2 2 0 0 1 0 4H3" />
+        <path d="M13.5 7a3 3 0 1 1 5.5 1.7L14 17h6" />
+      </symbol>
+      <symbol id="icon-sliders" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" />
+        <circle cx="9" cy="6" r="2" />
+        <circle cx="15" cy="12" r="2" />
+        <circle cx="11" cy="18" r="2" />
+      </symbol>
+      <symbol id="icon-sound" viewBox="0 0 24 24">
+        <path d="M4 10v4h4l5 4V6l-5 4Z" />
+        <path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11" />
+      </symbol>
+      <symbol id="icon-pause" viewBox="0 0 24 24">
+        <path d="M8 5v14M16 5v14" />
+      </symbol>
+      <symbol id="icon-stop" viewBox="0 0 24 24">
+        <rect x="6" y="6" width="12" height="12" rx="1" />
+      </symbol>
+      <symbol id="icon-mic" viewBox="0 0 24 24">
+        <rect x="9" y="3" width="6" height="12" rx="3" />
+        <path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3M9 21h6" />
+      </symbol>
+      <symbol id="icon-copy" viewBox="0 0 24 24">
+        <rect x="8" y="8" width="12" height="12" rx="2" />
+        <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
+      </symbol>
+      <symbol id="icon-spark" viewBox="0 0 24 24">
+        <path d="m12 3 1.3 4.7L18 9l-4.7 1.3L12 15l-1.3-4.7L6 9l4.7-1.3ZM18.5 15l.7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7Z" />
+      </symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14M14 7l5 5-5 5" />
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6" />
+      </symbol>
+      <symbol id="icon-trash" viewBox="0 0 24 24">
+        <path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13M10 11v5M14 11v5" />
+      </symbol>
+    </svg>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <button class="brand" type="button" data-go="home" aria-label="Gå til start">
+          <span class="brand-mark" aria-hidden="true">K</span>
+          <span>
+            <strong>Klarsti</strong>
+            <small>Hjælp til ord og tal</small>
+          </span>
+        </button>
+
+        <nav class="desktop-nav" aria-label="Hovedmenu">
+          <button class="nav-button is-active" type="button" data-nav="home" aria-current="page">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-home"></use></svg>
+            <span>Start</span>
+          </button>
+          <button class="nav-button" type="button" data-nav="read">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-book"></use></svg>
+            <span>Læs &amp; skriv</span>
+          </button>
+          <button class="nav-button" type="button" data-nav="numbers">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-numbers"></use></svg>
+            <span>Tal &amp; regning</span>
+          </button>
+          <button class="nav-button" type="button" data-nav="settings">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-sliders"></use></svg>
+            <span>Visning</span>
+          </button>
+        </nav>
+
+        <div class="connection-pill" id="connection-pill" role="status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="connection-text">Klar</span>
+        </div>
+      </header>
+
+      <nav class="mobile-nav" aria-label="Hovedmenu">
+        <button class="nav-button is-active" type="button" data-nav="home" aria-current="page">
+          <svg aria-hidden="true" focusable="false"><use href="#icon-home"></use></svg><span>Start</span>
+        </button>
+        <button class="nav-button" type="button" data-nav="read">
+          <svg aria-hidden="true" focusable="false"><use href="#icon-book"></use></svg><span>Læs</span>
+        </button>
+        <button class="nav-button" type="button" data-nav="numbers">
+          <svg aria-hidden="true" focusable="false"><use href="#icon-numbers"></use></svg><span>Tal</span>
+        </button>
+        <button class="nav-button" type="button" data-nav="settings">
+          <svg aria-hidden="true" focusable="false"><use href="#icon-sliders"></use></svg><span>Visning</span>
+        </button>
+      </nav>
+
+      <main id="main-content" tabindex="-1">
+        <section class="view" id="view-home" data-view="home" aria-labelledby="home-title">
+          <div class="home-hero">
+            <div class="hero-copy">
+              <p class="eyebrow">Hjælp i dit tempo</p>
+              <h1 id="home-title">Ord og tal bliver lettere, når de deles op.</h1>
+              <p class="lead">
+                Brug oplæsning, fokus på én sætning og regning trin for trin. Du vælger selv,
+                hvordan teksten skal se ud.
+              </p>
+              <div class="hero-actions">
+                <button class="button button-primary" type="button" data-go="read">
+                  <svg aria-hidden="true" focusable="false"><use href="#icon-book"></use></svg>
+                  Hjælp til tekst
+                </button>
+                <button class="button button-secondary" type="button" data-go="numbers">
+                  <svg aria-hidden="true" focusable="false"><use href="#icon-numbers"></use></svg>
+                  Hjælp til tal
+                </button>
+              </div>
+            </div>
+            <div class="hero-visual" aria-label="Eksempel på hjælp i små trin">
+              <div class="path-card path-one">
+                <span>1</span>
+                <div><strong>Skriv</strong><small>eller indsæt</small></div>
+              </div>
+              <div class="path-line" aria-hidden="true"></div>
+              <div class="path-card path-two">
+                <span>2</span>
+                <div><strong>Del op</strong><small>ét trin ad gangen</small></div>
+              </div>
+              <div class="path-line" aria-hidden="true"></div>
+              <div class="path-card path-three">
+                <span>3</span>
+                <div><strong>Forstå</strong><small>på din måde</small></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="choice-grid" aria-label="Vælg et værktøj">
+            <article class="choice-card choice-read">
+              <div class="choice-icon"><svg aria-hidden="true" focusable="false"><use href="#icon-book"></use></svg></div>
+              <p class="card-kicker">Ordblindhed</p>
+              <h2>Læs og skriv med mere ro</h2>
+              <p>Få tekst læst højt, gør linjerne tydeligere, og tag én sætning ad gangen.</p>
+              <ul class="check-list">
+                <li><svg aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg> Oplæsning med dansk stemme</li>
+                <li><svg aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg> Fokusvisning og tekstvalg</li>
+                <li><svg aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg> Diktering, når browseren tillader det</li>
+              </ul>
+              <button class="text-link" type="button" data-go="read">
+                Åbn teksthjælp <svg aria-hidden="true" focusable="false"><use href="#icon-arrow"></use></svg>
+              </button>
+            </article>
+
+            <article class="choice-card choice-numbers">
+              <div class="choice-icon"><svg aria-hidden="true" focusable="false"><use href="#icon-numbers"></use></svg></div>
+              <p class="card-kicker">Talblindhed</p>
+              <h2>Se, hvordan regningen hænger sammen</h2>
+              <p>Brug tydelige mellemregninger, pladsværdi, brøker, procent og hverdagstal.</p>
+              <ul class="check-list">
+                <li><svg aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg> Plus, minus, gange og division</li>
+                <li><svg aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg> Farvede pladser i tallet</li>
+                <li><svg aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg> Rabat, byttepenge og tid</li>
+              </ul>
+              <button class="text-link" type="button" data-go="numbers">
+                Åbn talhjælp <svg aria-hidden="true" focusable="false"><use href="#icon-arrow"></use></svg>
+              </button>
+            </article>
+          </div>
+
+          <div class="info-strip">
+            <div class="info-icon" aria-hidden="true">
+              <svg aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg>
+            </div>
+            <div>
+              <strong>Privat fra starten</strong>
+              <p>Ingen konto, reklamer eller sporing. Klarsti gemmer eller sender ikke din tekst.</p>
+            </div>
+            <details>
+              <summary>Brug som app på iPhone</summary>
+              <p>Åbn siden i Safari, tryk på Del, og vælg “Føj til hjemmeskærm”.</p>
+            </details>
+          </div>
+        </section>
+
+        <section class="view" id="view-read" data-view="read" aria-labelledby="read-title" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Læs &amp; skriv</p>
+              <h1 id="read-title">Gør teksten lettere at følge</h1>
+              <p>Skriv eller indsæt tekst. Klarsti gemmer eller sender den ikke.</p>
+            </div>
+            <button class="button button-quiet" type="button" id="load-example">
+              <svg aria-hidden="true" focusable="false"><use href="#icon-spark"></use></svg>
+              Prøv et eksempel
+            </button>
+          </div>
+
+          <div class="workspace-grid">
+            <div class="panel editor-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="step-badge">1</span>
+                  <h2>Din tekst</h2>
+                </div>
+                <span class="privacy-label">Gemmes ikke af Klarsti</span>
+              </div>
+
+              <label class="sr-only" for="reading-text">Tekst, der skal læses eller bearbejdes</label>
+              <textarea
+                id="reading-text"
+                rows="12"
+                spellcheck="true"
+                autocapitalize="sentences"
+                placeholder="Skriv eller indsæt tekst her …"
+              ></textarea>
+
+              <div class="editor-meta">
+                <span id="word-count">0 ord</span>
+                <span id="read-time">Under 1 minuts læsning</span>
+              </div>
+
+              <div class="button-row">
+                <button class="button button-primary" type="button" id="speak-all">
+                  <svg aria-hidden="true" focusable="false"><use href="#icon-sound"></use></svg>
+                  Læs højt
+                </button>
+                <button class="button button-secondary" type="button" id="pause-speech">
+                  <svg aria-hidden="true" focusable="false"><use href="#icon-pause"></use></svg>
+                  Pause
+                </button>
+                <button class="button button-secondary" type="button" id="stop-speech">
+                  <svg aria-hidden="true" focusable="false"><use href="#icon-stop"></use></svg>
+                  Stop
+                </button>
+              </div>
+
+              <div class="speech-options">
+                <label for="speech-speed">Oplæsningshastighed</label>
+                <div>
+                  <input id="speech-speed" type="range" min="0.6" max="1.3" step="0.1" value="0.9" />
+                  <output id="speech-speed-output" for="speech-speed">0,9×</output>
+                </div>
+              </div>
+
+              <div class="utility-row">
+                <button class="utility-button" type="button" id="start-dictation">
+                  <svg aria-hidden="true" focusable="false"><use href="#icon-mic"></use></svg>
+                  Diktér
+                </button>
+                <button class="utility-button" type="button" id="clean-text">
+                  <svg aria-hidden="true" focusable="false"><use href="#icon-spark"></use></svg>
+                  Ryd mellemrum
+                </button>
+                <button class="utility-button" type="button" id="copy-text">
+                  <svg aria-hidden="true" focusable="false"><use href="#icon-copy"></use></svg>
+                  Kopiér
+                </button>
+                <button class="utility-button" type="button" id="undo-text" hidden>Fortryd ændring</button>
+                <button class="utility-button" type="button" id="clear-text">Ryd tekst</button>
+              </div>
+
+              <p class="helper-text" id="dictation-help">
+                Browserens diktering kan bruge en online taletjeneste. På iPhone kan du også bruge mikrofonen på tastaturet.
+              </p>
+            </div>
+
+            <div class="panel focus-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="step-badge">2</span>
+                  <h2>Én sætning ad gangen</h2>
+                </div>
+                <span id="sentence-progress">0 af 0</span>
+              </div>
+
+              <div class="focus-reader" id="focus-reader">
+                <p id="focus-sentence">Din første sætning vises her.</p>
+              </div>
+
+              <div class="focus-controls">
+                <button class="button button-secondary" type="button" id="previous-sentence">Forrige</button>
+                <button class="button button-primary" type="button" id="speak-sentence">
+                  <svg aria-hidden="true" focusable="false"><use href="#icon-sound"></use></svg>
+                  Læs sætningen
+                </button>
+                <button class="button button-secondary" type="button" id="next-sentence">Næste</button>
+              </div>
+
+              <div class="sentence-list-wrap">
+                <h3>Hele teksten i små bidder</h3>
+                <div class="sentence-list" id="sentence-list">
+                  <p class="empty-state">Skriv tekst i feltet til venstre.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="status-message" id="reading-status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="view" id="view-numbers" data-view="numbers" aria-labelledby="numbers-title" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Tal &amp; regning</p>
+              <h1 id="numbers-title">Se regningen i tydelige trin</h1>
+              <p>Brug decimalkomma eller punktum. Skriv tusinder uden separator. Eksempel: 12,5 eller 12.5.</p>
+            </div>
+          </div>
+
+          <div class="tool-tabs" role="tablist" aria-label="Vælg regneværktøj">
+            <button type="button" role="tab" aria-selected="true" aria-controls="number-tool-calculator" id="tab-calculator" data-number-tab="calculator">
+              Regner
+            </button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="number-tool-place" id="tab-place" data-number-tab="place" tabindex="-1">
+              Pladsværdi
+            </button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="number-tool-fraction" id="tab-fraction" data-number-tab="fraction" tabindex="-1">
+              Brøk &amp; procent
+            </button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="number-tool-everyday" id="tab-everyday" data-number-tab="everyday" tabindex="-1">
+              Hverdagen
+            </button>
+          </div>
+
+          <div class="number-tool panel" id="number-tool-calculator" role="tabpanel" aria-labelledby="tab-calculator">
+            <div class="tool-intro">
+              <span class="tool-number">01</span>
+              <div><h2>Regn trin for trin</h2><p>Vælg regnetegn og se en kort forklaring.</p></div>
+            </div>
+            <form id="calculator-form" novalidate>
+              <div class="calculation-inputs">
+                <div class="field">
+                  <label for="number-a">Første tal</label>
+                  <input id="number-a" inputmode="decimal" autocomplete="off" value="12" aria-describedby="calculator-error" />
+                </div>
+                <div class="field operator-field">
+                  <label for="operator">Regnetegn</label>
+                  <select id="operator">
+                    <option value="+">+ plus</option>
+                    <option value="-">− minus</option>
+                    <option value="*">× gange</option>
+                    <option value="/">÷ divideret med</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="number-b">Andet tal</label>
+                  <input id="number-b" inputmode="decimal" autocomplete="off" value="8" aria-describedby="calculator-error" />
+                </div>
+                <button class="button button-primary calculate-button" type="submit">Vis svaret</button>
+              </div>
+              <p class="form-error" id="calculator-error" role="alert"></p>
+            </form>
+
+            <p class="sr-only" id="calculator-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
+            <div class="result-layout" id="calculator-result">
+              <div class="answer-card">
+                <span id="answer-label">Svaret er</span>
+                <strong id="answer-value">20</strong>
+                <p id="answer-equation">12 + 8 = 20</p>
+              </div>
+              <div class="steps-card">
+                <h3>Sådan kan du tænke</h3>
+                <ol id="calculation-steps">
+                  <li><span>1</span><p>Start med 12.</p></li>
+                  <li><span>2</span><p>Læg 8 til.</p></li>
+                  <li><span>3</span><p>Du ender på 20.</p></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="number-tool panel" id="number-tool-place" role="tabpanel" aria-labelledby="tab-place" hidden>
+            <div class="tool-intro">
+              <span class="tool-number">02</span>
+              <div><h2>Se tallets pladser</h2><p>Hvert ciffer får sin egen plads og værdi.</p></div>
+            </div>
+            <form id="place-form" class="inline-form" novalidate>
+              <div class="field grow">
+                <label for="place-number">Skriv et tal</label>
+                <input id="place-number" inputmode="decimal" autocomplete="off" value="1205,34" aria-describedby="place-error" />
+              </div>
+              <button class="button button-primary" type="submit">Del tallet op</button>
+            </form>
+            <p class="form-error" id="place-error" role="alert"></p>
+            <p class="sr-only" id="place-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
+            <div class="place-value-grid" id="place-value-grid"></div>
+            <div class="explanation-box">
+              <strong>Det betyder</strong>
+              <p id="place-explanation"></p>
+            </div>
+          </div>
+
+          <div class="number-tool panel" id="number-tool-fraction" role="tabpanel" aria-labelledby="tab-fraction" hidden>
+            <div class="tool-intro">
+              <span class="tool-number">03</span>
+              <div><h2>Brøk, decimaltal og procent</h2><p>Tre måder at vise den samme del på.</p></div>
+            </div>
+            <form id="fraction-form" novalidate>
+              <div class="fraction-input">
+                <div class="field">
+                  <label for="numerator">Tæller</label>
+                  <input id="numerator" inputmode="numeric" autocomplete="off" value="1" aria-describedby="fraction-error" />
+                </div>
+                <span class="fraction-line" aria-hidden="true"></span>
+                <div class="field">
+                  <label for="denominator">Nævner</label>
+                  <input id="denominator" inputmode="numeric" autocomplete="off" value="4" aria-describedby="fraction-error" />
+                </div>
+                <button class="button button-primary" type="submit">Vis delen</button>
+              </div>
+              <p class="form-error" id="fraction-error" role="alert"></p>
+            </form>
+            <p class="sr-only" id="fraction-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
+            <div class="fraction-results" id="fraction-results">
+              <div><span>Brøk</span><strong id="fraction-display">1 / 4</strong></div>
+              <div><span>Decimaltal</span><strong id="decimal-display">0,25</strong></div>
+              <div><span>Procent</span><strong id="percent-display">25 %</strong></div>
+            </div>
+            <div class="fraction-visual" id="fraction-visual">
+              <div class="fraction-bar" role="img" aria-label="25 procent udfyldt">
+                <div id="fraction-fill" style="width: 25%"></div>
+              </div>
+              <p id="fraction-note">En fjerdedel er det samme som 25 ud af 100.</p>
+            </div>
+          </div>
+
+          <div class="number-tool panel" id="number-tool-everyday" role="tabpanel" aria-labelledby="tab-everyday" hidden>
+            <div class="tool-intro">
+              <span class="tool-number">04</span>
+              <div><h2>Tal i hverdagen</h2><p>Vælg den situation, du står med.</p></div>
+            </div>
+
+            <div class="everyday-grid">
+              <article class="mini-tool">
+                <h3>Rabat</h3>
+                <p>Hvad koster varen efter rabat?</p>
+                <form id="discount-form" novalidate>
+                  <div class="field">
+                    <label for="discount-price">Pris i kroner</label>
+                    <input id="discount-price" inputmode="decimal" value="400" aria-describedby="discount-result" />
+                  </div>
+                  <div class="field">
+                    <label for="discount-percent">Rabat i procent</label>
+                    <input id="discount-percent" inputmode="decimal" value="25" aria-describedby="discount-result" />
+                  </div>
+                  <button class="button button-secondary" type="submit">Beregn rabat</button>
+                </form>
+                <p class="mini-result" id="discount-result" role="status">Du sparer 100 kr. Ny pris: <strong>300 kr.</strong></p>
+              </article>
+
+              <article class="mini-tool">
+                <h3>Byttepenge</h3>
+                <p>Hvor meget skal du have tilbage?</p>
+                <form id="change-form" novalidate>
+                  <div class="field">
+                    <label for="total-price">Det koster</label>
+                    <input id="total-price" inputmode="decimal" value="68" aria-describedby="change-result" />
+                  </div>
+                  <div class="field">
+                    <label for="amount-paid">Du betaler</label>
+                    <input id="amount-paid" inputmode="decimal" value="100" aria-describedby="change-result" />
+                  </div>
+                  <button class="button button-secondary" type="submit">Beregn tilbage</button>
+                </form>
+                <p class="mini-result" id="change-result" role="status">Du skal have <strong>32 kr.</strong> tilbage.</p>
+              </article>
+
+              <article class="mini-tool">
+                <h3>Tidsforskel</h3>
+                <p>Hvor lang tid er der mellem to klokkeslæt?</p>
+                <form id="time-form" novalidate>
+                  <div class="field">
+                    <label for="start-time">Fra klokken</label>
+                    <input id="start-time" type="time" value="09:15" aria-describedby="time-result" />
+                  </div>
+                  <div class="field">
+                    <label for="end-time">Til klokken</label>
+                    <input id="end-time" type="time" value="11:00" aria-describedby="time-result" />
+                  </div>
+                  <button class="button button-secondary" type="submit">Beregn tid</button>
+                </form>
+                <p class="mini-result" id="time-result" role="status">Der er <strong>1 time og 45 minutter</strong>.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-settings" data-view="settings" aria-labelledby="settings-title" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Personlig visning</p>
+              <h1 id="settings-title">Indstil appen, så den passer til dig</h1>
+              <p>Dine valg gemmes kun på denne enhed. Tekst og regnestykker gemmes ikke.</p>
+            </div>
+          </div>
+
+          <div class="settings-grid">
+            <fieldset class="setting-card">
+              <legend>Tekstens størrelse</legend>
+              <p>Gælder især tekst, du skal læse.</p>
+              <div class="choice-buttons" id="font-size-options">
+                <label><input type="radio" name="font-size" value="small" /><span class="sample-small">A</span><small>Mellem</small></label>
+                <label><input type="radio" name="font-size" value="medium" checked /><span class="sample-medium">A</span><small>Stor</small></label>
+                <label><input type="radio" name="font-size" value="large" /><span class="sample-large">A</span><small>Meget stor</small></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="setting-card">
+              <legend>Skrifttype</legend>
+              <p>Vælg den form, dine øjne bedst kan følge.</p>
+              <div class="stacked-options">
+                <label><input type="radio" name="font-family" value="arial" checked /><span class="font-arial">Rolig sans-serif</span></label>
+                <label><input type="radio" name="font-family" value="verdana" /><span class="font-verdana">Bred sans-serif</span></label>
+                <label><input type="radio" name="font-family" value="system" /><span class="font-system">Enhedens skrift</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="setting-card">
+              <legend>Afstand i teksten</legend>
+              <p>Mere luft kan gøre linjerne lettere at holde fast i.</p>
+              <label class="switch-row">
+                <span><strong>Ekstra linjeafstand</strong><small>Mere plads mellem linjerne</small></span>
+                <input type="checkbox" id="line-spacing-toggle" checked />
+              </label>
+              <label class="switch-row">
+                <span><strong>Ekstra bogstavafstand</strong><small>Lidt mere plads mellem bogstaver</small></span>
+                <input type="checkbox" id="letter-spacing-toggle" />
+              </label>
+              <label class="switch-row">
+                <span><strong>Ekstra ordafstand</strong><small>Tydeligere mellemrum mellem ord</small></span>
+                <input type="checkbox" id="word-spacing-toggle" />
+              </label>
+            </fieldset>
+
+            <fieldset class="setting-card">
+              <legend>Farver</legend>
+              <p>Prøv dig frem. Der findes ikke én rigtig baggrund.</p>
+              <div class="theme-options">
+                <label><input type="radio" name="theme" value="cream" checked /><span class="theme-swatch cream"></span><small>Creme</small></label>
+                <label><input type="radio" name="theme" value="light" /><span class="theme-swatch light"></span><small>Lys</small></label>
+                <label><input type="radio" name="theme" value="dark" /><span class="theme-swatch dark"></span><small>Mørk</small></label>
+                <label><input type="radio" name="theme" value="contrast" /><span class="theme-swatch contrast"></span><small>Høj kontrast</small></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="setting-card">
+              <legend>Fokus og bevægelse</legend>
+              <p>Skru ned for det, der forstyrrer.</p>
+              <label class="switch-row">
+                <span><strong>Fokusmarkering</strong><small>Dæmp andre sætninger</small></span>
+                <input type="checkbox" id="focus-highlight-toggle" checked />
+              </label>
+              <label class="switch-row">
+                <span><strong>Reducer bevægelse</strong><small>Fjern bløde skift og animation</small></span>
+                <input type="checkbox" id="reduce-motion-toggle" />
+              </label>
+            </fieldset>
+
+            <div class="setting-card privacy-card">
+              <h2>Dit privatliv</h2>
+              <ul class="check-list">
+                <li><svg aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg> Ingen konto eller reklamer</li>
+                <li><svg aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg> Ingen analyse eller sporing</li>
+                <li><svg aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg> Kun visningsvalg gemmes lokalt</li>
+              </ul>
+              <button class="button button-danger" type="button" id="reset-settings">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-trash"></use></svg>
+                Nulstil mine indstillinger
+              </button>
+              <p class="helper-text" id="settings-status" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <div class="notice">
+            <strong>Et hjælpemiddel – ikke en diagnose</strong>
+            <p>Klarsti kan støtte læsning og regning, men erstatter ikke hjælp fra lærer, læsevejleder, rådgiver eller sundhedsfaglig person.</p>
+          </div>
+        </section>
+      </main>
+
+    </div>
+
+    <script src="./math-helpers.js" defer></script>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
